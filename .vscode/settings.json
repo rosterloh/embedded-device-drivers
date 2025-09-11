@@ -1,0 +1,14 @@
+{
+    "cSpell.language": "en-GB",
+    "cSpell.words": [
+        "capi",
+        "datasheet",
+        "defmt",
+        "Osterloh",
+        "sparkfun",
+        "qwiic"
+    ],
+    "[rust]": {
+        "editor.formatOnSave": true
+    }
+}
