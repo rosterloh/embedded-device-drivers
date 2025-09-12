@@ -4,7 +4,8 @@
         "capi",
         "datasheet",
         "defmt",
-        "Osterloh",
+        "osterloh",
+        "singletact",
         "sparkfun",
         "qwiic"
     ],
