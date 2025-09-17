@@ -12,9 +12,10 @@
 
 mod device;
 mod interface;
+pub use crate::interface::DEFAULT_DEVICE_ADDRESS;
 use crate::interface::{END_OF_PACKET, READ_COMMAND, Register, WRITE_COMMAND};
 mod types;
-pub use crate::types::{Error, SensorFrameMeasurement};
+pub use crate::types::{Error, SensorFrameMeasurement, SensorInfo};
 
 /// SingleTact device driver.
 #[derive(Debug)]

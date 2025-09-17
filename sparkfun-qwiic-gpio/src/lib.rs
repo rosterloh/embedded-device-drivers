@@ -32,7 +32,11 @@
 
 mod device;
 mod interface;
-use crate::interface::{DEFAULT_DEVICE_ADDRESS, Register};
+use crate::interface::{Register, DEFAULT_DEVICE_ADDRESS};
+pub use crate::interface::{
+    ALL_INPUTS, ALL_INVERTED_POLARITY, ALL_NORMAL_POLARITY, ALL_OUTPUTS, ALL_OUTPUTS_HIGH,
+    ALL_OUTPUTS_LOW,
+};
 mod types;
 pub use crate::types::{Error, PinConfig, PinLevel, PinPolarity};
 

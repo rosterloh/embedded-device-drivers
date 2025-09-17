@@ -1,4 +1,6 @@
-pub(crate) const DEVICE_ADDRESS: u8 = 0x04;
+/// Default I2C address for the device.
+pub const DEFAULT_DEVICE_ADDRESS: u8 = 0x04;
+
 pub(crate) const READ_COMMAND: u8 = 0x01;
 pub(crate) const WRITE_COMMAND: u8 = 0x02;
 pub(crate) const END_OF_PACKET: u8 = 0xFF;

@@ -1,22 +1,22 @@
 pub(crate) const DEFAULT_DEVICE_ADDRESS: u8 = 0x27;
 
-// /// All pins configured as inputs.
-// pub const ALL_INPUTS: u8 = 0xFF;
+/// All pins configured as inputs.
+pub const ALL_INPUTS: u8 = 0xFF;
 
-// /// All pins configured as outputs.
-// pub const ALL_OUTPUTS: u8 = 0x00;
+/// All pins configured as outputs.
+pub const ALL_OUTPUTS: u8 = 0x00;
 
-// /// All pins normal polarity.
-// pub const ALL_NORMAL_POLARITY: u8 = 0x00;
+/// All pins normal polarity.
+pub const ALL_NORMAL_POLARITY: u8 = 0x00;
 
-// /// All pins inverted polarity.
-// pub const ALL_INVERTED_POLARITY: u8 = 0xFF;
+/// All pins inverted polarity.
+pub const ALL_INVERTED_POLARITY: u8 = 0xFF;
 
-// /// All outputs low.
-// pub const ALL_OUTPUTS_LOW: u8 = 0x00;
+/// All outputs low.
+pub const ALL_OUTPUTS_LOW: u8 = 0x00;
 
-// /// All outputs high.
-// pub const ALL_OUTPUTS_HIGH: u8 = 0xFF;
+/// All outputs high.
+pub const ALL_OUTPUTS_HIGH: u8 = 0xFF;
 
 pub(crate) struct Register;
 

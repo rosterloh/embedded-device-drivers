@@ -19,13 +19,6 @@ embedded-hal-async = { workspace = true, optional = true }
 maybe-async-cfg = "0.2.5"
 
 [dev-dependencies]
-embedded-hal-mock = { version = "0.11.1", features = ["eh1"], default-features = false }
-i2cdev = "0.6.1"
-linux-embedded-hal = "0.4.0"
-
-[profile.dev]
-panic = "abort"
-
-[profile.release]
-lto = true
-panic = "abort"
+embedded-hal-mock.workspace = true
+[target.'cfg(target_os = "linux")'.dev-dependencies]
+linux-embedded-hal.workspace = true

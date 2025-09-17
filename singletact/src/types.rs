@@ -9,6 +9,19 @@ pub enum Error<E> {
 
 /// Result of a measurement
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub struct SensorInfo {
+    /// Sensor configured address.
+    pub address: u8,
+    /// Sensor serial number.
+    pub serial: u16,
+    /// Sensor firmware revision.
+    pub firmware: u8,
+    /// Sensor baseline value.
+    pub baseline: u16,
+}
+
+/// Result of a measurement
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct SensorFrameMeasurement {
     /// Frame index.
     pub index: u16,
