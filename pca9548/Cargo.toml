@@ -1,27 +1,27 @@
 [package]
-name = "singletact"
+name = "pca9548"
 version = "0.1.0"
-description = "A platform-independent driver for the SingleTact force sensor"
+description = "A platform-independent driver for the PCA9548 I2C multiplexer"
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
-keywords = ["i2c", "force-sensor", "singletact", "embedded-hal-driver"]
+keywords = ["i2c", "multiplexer", "pca9548", "embedded-hal-driver"]
 categories = ["embedded", "hardware-support", "no-std"]
 
 [features]
 default = []
 async = ["dep:embedded-hal-async"]
+bus = []
 
 [dependencies]
 embedded-hal.workspace = true
 embedded-hal-async = { workspace = true, optional = true }
-embedded-hal-bus.workspace = true
 maybe-async-cfg = "0.2.5"
+thiserror = { version = "2.0", default-features = false }
 
 [dev-dependencies]
 embedded-hal-mock.workspace = true
-pca9548 = { path = "../pca9548" }
-# sparkfun-qwiic-gpio = { path = "../sparkfun-qwiic-gpio" }
 [target.'cfg(target_os = "linux")'.dev-dependencies]
 linux-embedded-hal.workspace = true
+rstest = "0.26.1"

@@ -2,6 +2,7 @@
 # https://doc.rust-lang.org/cargo/reference/resolver.html#resolver-versions
 resolver = "3"
 members = [
+    "pca9548",
     "singletact",
     "sparkfun-qwiic-gpio",
 ]
@@ -16,7 +17,7 @@ readme = "README.md"
 repository = "https://github.com/rosterloh/embedded-device-drivers"
 description = "Collection of no_std drivers for embedded devices"
 keywords = ["embedded", "hal", "io"]
-rust-version = "1.89"
+rust-version = "1.90"
 
 [workspace.dependencies]
 embedded-hal = "1.0.0"

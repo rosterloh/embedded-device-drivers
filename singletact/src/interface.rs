@@ -7,6 +7,7 @@ pub(crate) const END_OF_PACKET: u8 = 0xFF;
 
 pub(crate) struct Register;
 
+#[allow(dead_code)]
 impl Register {
     pub(crate) const ADDRESS: u8 = 0x00;
     pub(crate) const SERIAL: u8 = 0x01;
