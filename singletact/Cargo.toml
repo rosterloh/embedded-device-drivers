@@ -17,7 +17,7 @@ async = ["dep:embedded-hal-async"]
 embedded-hal.workspace = true
 embedded-hal-async = { workspace = true, optional = true }
 embedded-hal-bus.workspace = true
-maybe-async-cfg = "0.2.5"
+maybe-async-cfg.workspace = true
 
 [dev-dependencies]
 embedded-hal-mock.workspace = true

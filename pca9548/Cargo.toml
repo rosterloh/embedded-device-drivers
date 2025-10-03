@@ -17,7 +17,7 @@ bus = []
 [dependencies]
 embedded-hal.workspace = true
 embedded-hal-async = { workspace = true, optional = true }
-maybe-async-cfg = "0.2.5"
+maybe-async-cfg.workspace = true
 thiserror = { version = "2.0", default-features = false }
 
 [dev-dependencies]
