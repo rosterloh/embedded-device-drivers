@@ -20,27 +20,27 @@ where
     I2C: AsyncI2c,
 {
     /// Disables all ports
-    pub fn with_ports_disabled(self) -> Result<Self, I2C::Error> {
-        self.with_ports([false; MAX_PORTS])
+    pub async fn with_ports_disabled(self) -> Result<Self, I2C::Error> {
+        self.with_ports([false; MAX_PORTS]).await
     }
 
     /// Disables all ports
-    pub fn set_ports_disabled(mut self) -> Result<(), I2C::Error> {
-        self.set_ports([false; MAX_PORTS])
+    pub async fn set_ports_disabled(mut self) -> Result<(), I2C::Error> {
+        self.set_ports([false; MAX_PORTS]).await
     }
 
     /// Enables all ports
-    pub fn with_ports_enabled(self) -> Result<Self, I2C::Error> {
-        self.with_ports([true; MAX_PORTS])
+    pub async fn with_ports_enabled(self) -> Result<Self, I2C::Error> {
+        self.with_ports([true; MAX_PORTS]).await
     }
 
     /// Enables all ports
-    pub fn set_ports_enabled(mut self) -> Result<(), I2C::Error> {
-        self.set_ports([true; MAX_PORTS])
+    pub async fn set_ports_enabled(mut self) -> Result<(), I2C::Error> {
+        self.set_ports([true; MAX_PORTS]).await
     }
 
     /// Enables / Disables the selected port
-    pub fn set_port(&mut self, port: u8, state: impl Into<bool>) -> Result<(), I2C::Error> {
+    pub async fn set_port(&mut self, port: u8, state: impl Into<bool>) -> Result<(), I2C::Error> {
         if port >= MAX_PORTS as u8 {
             return Err(PCA9548Error::PortError);
         }
@@ -49,30 +49,31 @@ where
 
         let code = Self::port_code(self.state);
 
-        self.i2c_write(&[code])
+        self.i2c_write(&[code]).await
     }
 
     /// Sets the selected port
-    pub fn with_port(mut self, port: u8, state: impl Into<bool>) -> Result<Self, I2C::Error> {
-        self.set_port(port, state.into())?;
+    pub async fn with_port(mut self, port: u8, state: impl Into<bool>) -> Result<Self, I2C::Error> {
+        self.set_port(port, state.into()).await?;
         Ok(self)
     }
 
     /// Enables / Disables the selected ports
-    pub fn set_ports(&mut self, ports: [bool; MAX_PORTS]) -> Result<(), I2C::Error> {
+    pub async fn set_ports(&mut self, ports: [bool; MAX_PORTS]) -> Result<(), I2C::Error> {
         let code = Self::port_code(ports);
-        self.i2c_write(&[code])
+        self.i2c_write(&[code]).await
     }
 
     /// Enables / Disables the selected ports
-    pub fn with_ports(mut self, ports: [bool; MAX_PORTS]) -> Result<Self, I2C::Error> {
-        self.set_ports(ports)?;
+    pub async fn with_ports(mut self, ports: [bool; MAX_PORTS]) -> Result<Self, I2C::Error> {
+        self.set_ports(ports).await?;
         Ok(self)
     }
 
-    fn i2c_write(&mut self, bytes: &[u8]) -> Result<(), I2C::Error> {
+    async fn i2c_write(&mut self, bytes: &[u8]) -> Result<(), I2C::Error> {
         self.i2c
             .write(self.address, bytes)
+            .await
             .map_err(PCA9548Error::I2CError)
     }
 }
@@ -93,7 +94,7 @@ mod test {
     #[rstest]
     #[case([true;8], 0b0000_1111)]
     #[case([false;8], 0b0000_0000)]
-    #[case([true, false, true, false], 0b0000_0101)]
+    #[case([true, false, true, false, false, true, false, true], 0b1010_0101)]
     fn setup_ports(#[case] ports: [bool; 8], #[case] result: u8) {
         assert_eq!(PCA9548::<Mock>::port_code(ports), result)
     }
